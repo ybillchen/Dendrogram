@@ -1,4 +1,4 @@
-# `Dendrogram`: N-Dimensional Dentrogram
+# `Dendrogram`: N-Dimensional Dendrogram
 
 [![version](https://img.shields.io/badge/version-v0.0-brightgreen.svg?style=flat)](https://github.com/EnthalpyBill/Dentrogram)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
