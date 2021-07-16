@@ -1,2 +1,70 @@
-# Dendrogram
-Dendrogram
+# `Dendrogram`: N-Dimensional Dentrogram
+
+[![version](https://img.shields.io/badge/version-v0.0-brightgreen.svg?style=flat)](https://github.com/EnthalpyBill/Dentrogram)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+
+`Dendrogram` is a toolkit for creating N-dimensional dendrogram 
+
+## Table of Contents
+
+- [Intro](#intro)
+- [Install](#install)
+- [Usage](#usage)
+- [Contribute](#contribute)
+- [Maintainers](#maintainers)
+- [Cite](#cite)
+- [License](#license)
+
+## Intro
+
+*Placeholder*
+
+## Install
+
+The prerequisites of `Dendrogram` are 
+
+```
+python >= 3.8
+numpy >= 1.18
+```
+
+Lower versions may also work (and higher versions may not work). Please [raise an issue](https://github.com/EnthalpyBill/Dendrogram/issues/new) if it doesn't work for you. Next, the `Dendrogram` package can be easily installed with `pip`:
+```shell
+$ pip install dendrogram
+```
+Alternatively, you can `git clone` the source package from [GitHub](https://github.com/EnthalpyBill/Dendrogram):
+```shell
+$ git clone git://github.com/EnthalpyBill/Dendrogram.git
+```
+To build and install `Dendrogram`, `cd` the folder and `pip install` it:
+```shell
+$ cd Dendrogram/
+$ pip install -e .
+```
+The `-e` command allows you to make changes to the code.
+
+## Usage
+
+To use the package, just import it as
+```python
+>>> import Dendrogram as dg
+```
+
+*Placeholder*
+
+## Contribute
+
+Feel free to dive in! [Raise an issue](https://github.com/EnthalpyBill/Dendrogram/issues/new) or submit pull requests.
+
+## Maintainers
+
+- [Bill Chen](https://github.com/EnthalpyBill)
+- Molly Meng
+
+## Cite
+
+This README file is based on [Standard Readme](https://github.com/RichardLitt/standard-readme).
+
+## License
+
+`Dendrogram` is available at [GitHub](https://github.com/EnthalpyBill/Dendrogram) under the [MIT license](LICENSE).
