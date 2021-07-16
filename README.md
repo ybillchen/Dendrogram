@@ -58,8 +58,8 @@ Feel free to dive in! [Raise an issue](https://github.com/EnthalpyBill/Dendrogra
 
 ## Maintainers
 
-- [Bill Chen](https://github.com/EnthalpyBill)
-- Molly Meng
+- [@EnthalpyBill (Bill Chen)](https://github.com/EnthalpyBill)
+- @MollyMeng (Molly Meng)
 
 ## Cite
 
