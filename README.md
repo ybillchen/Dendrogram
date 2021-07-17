@@ -55,8 +55,6 @@ The command below creates the clustering tree (a `structureTree.clusterTree` obj
 ```
 `data` must be an ND histogram (i.e., a numpy ndarray). 
 
-*Placeholder*
-
 ## Contribute
 
 Feel free to dive in! [Raise an issue](https://github.com/EnthalpyBill/Dendrogram/issues/new) or submit pull requests.
