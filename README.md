@@ -49,9 +49,9 @@ To use the package, just import it as
 ```python
 >>> import Dendrogram as dg
 ```
-The command below creates the clustering tree for the dendrogram:
+The command below creates the clustering tree (a `structureTree.clusterTree` object) for the dendrogram:
 ```python
->>> dg.makeTreeND(data, min_value, min_delta=0, min_npix=1, num_level=100)
+>>> tree = dg.makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100)
 ```
 `data` must be an ND histogram (i.e., a numpy ndarray). 
 
@@ -63,8 +63,8 @@ Feel free to dive in! [Raise an issue](https://github.com/EnthalpyBill/Dendrogra
 
 ## Maintainers
 
-- [@EnthalpyBill (Bill Chen)](https://github.com/EnthalpyBill)
 - @XiMeng (Xi Meng)
+- [@EnthalpyBill (Bill Chen)](https://github.com/EnthalpyBill)
 
 ## Cite
 
