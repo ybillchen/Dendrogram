@@ -1,6 +1,8 @@
 import numpy as np
 from .percolationND import latticeND
 
+__all__ = ["clusterTree", "makeTree"]
+
 class clusterTree():
     def __init__(self, label, mask, isleaf=True):
         self._label = label
@@ -56,7 +58,7 @@ class clusterTree():
 def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100):
     max_level = np.nanmax(data)
     level_list = np.linspace(max_level, min_value, num_level)
-    myTree = clusterTree(-1, np.zeros(data.shape, dtype=bool))
+    tree = clusterTree(-1, np.zeros(data.shape, dtype=bool))
     new_label = 0
     current_label = -1 * np.ones(data.shape, dtype=int)
 
@@ -80,7 +82,7 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100):
                 # update current labels
                 current_label[mask] = (min(smallset) * 
                     np.ones(data[mask].shape, dtype=int))
-                myTree.branches[min(smallset)].update_mask(mask) 
+                tree.branches[min(smallset)].update_mask(mask) 
 
             # create leaf if there is no overlaping clusters
             elif len(smallset) == 0:
@@ -90,12 +92,12 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100):
                     # update current labels
                     current_label[mask] = (new_label * 
                         np.ones(data[mask].shape, dtype=int))
-                    myTree.create_leaf(new_label, mask) 
+                    tree.create_leaf(new_label, mask) 
                     new_label += 1
 
             # merge leaves if there are many overlaping clusters
             elif len(smallset) > 1: 
-                myTree.merge_branch(new_label, mask, smallset) 
+                tree.merge_branch(new_label, mask, smallset) 
 
                 # update current labels
                 current_label[mask] = (new_label * 
@@ -105,6 +107,6 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100):
     currentset = set(current_label.flatten())
     currentset.discard(-1)
 
-    myTree.merge_final(currentset)
+    tree.merge_final(currentset)
 
-    return myTree
+    return tree
