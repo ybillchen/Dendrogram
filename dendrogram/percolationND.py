@@ -17,7 +17,6 @@ class latticeND():
     def percolate(self):
         return self._percolate
     
-    
     def identify_cluster(self):
         # for simplicity, use flattened labels
         label_flat = -1 * np.ones(self._len, dtype=int)
