@@ -42,13 +42,13 @@ class clusterTree():
 
     def merge_branch(self, label, mask, branch):
         self.branches[label] = clusterTree(label, mask, False)
-        for i in list(branch): 
+        for i in branch: 
             self._branches[label]._children[i] = self._branches[i]
             self._branches[i]._parent[label] = self._branches[label]
 
     def merge_final(self, branch):
         self._isleaf = False
-        for i in list(branch): 
+        for i in branch: 
             self._children[i] = self._branches[i]
             self._branches[i]._parent[-1] = self
             self._mask = self._mask | self._branches[i]._mask
