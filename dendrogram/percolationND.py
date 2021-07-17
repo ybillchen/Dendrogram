@@ -7,10 +7,16 @@ class latticeND():
         self._len = np.prod(self._shape) # total number of elements
         self._lattice = data > level
         self._label = None
+        self._percolate = None
 
     @property
     def label(self):
         return self._label
+
+    @property
+    def percolate(self):
+        return self._percolate
+    
     
     def identify_cluster(self):
         # for simplicity, use flattened labels
@@ -64,15 +70,12 @@ class latticeND():
         return self._label
 
     def percolating(self):
-        top = set(self._label[0].reshape(self._shape[1]*self._shape[2]))
-        bottom = set(self._label[-1].reshape(self._shape[1]*self._shape[2]))
+        top = set(self._label[0].reshape(self._len // self._shape[0]))
+        bottom = set(self._label[-1].reshape(self._len // self._shape[0]))
         top.discard(-1)
         bottom.discard(-1)
-        if top & bottom != set():
-            self._percolate = 1
-            return 1
-        else:
-            self._percolate = 0
-            return 0
+
+        self._percolate = (top & bottom != set())
+        return self._percolate
 
 
