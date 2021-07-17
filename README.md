@@ -1,6 +1,6 @@
 # `Dendrogram`: N-Dimensional Dendrogram
 
-[![version](https://img.shields.io/badge/version-v0.1-brightgreen.svg?style=flat)](https://github.com/EnthalpyBill/Dentrogram)
+[![version](https://img.shields.io/badge/version-v0.1.dev-brightgreen.svg?style=flat)](https://github.com/EnthalpyBill/Dentrogram)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 `Dendrogram` is a toolkit for creating N-dimensional (ND) dendrogram 
@@ -11,7 +11,8 @@
 - [Install](#install)
 - [Usage](#usage)
 - [Contribute](#contribute)
-- [Maintainers](#maintainers)
+	- [Authors](#authors)
+	- [Maintainers](#maintainers)
 - [Cite](#cite)
 - [License](#license)
 
@@ -28,11 +29,7 @@ python >= 3.8
 numpy >= 1.18
 ```
 
-Lower versions may also work (and higher versions may not work). Please [raise an issue](https://github.com/EnthalpyBill/Dendrogram/issues/new) if it doesn't work for you. Next, the `Dendrogram` package can be easily installed with `pip`:
-```shell
-$ pip install dendrogram
-```
-Alternatively, you can `git clone` the source package from [GitHub](https://github.com/EnthalpyBill/Dendrogram):
+Lower versions may also work (and higher versions may not work). Please [raise an issue](https://github.com/EnthalpyBill/Dendrogram/issues/new) if it doesn't work for you. Next, you can `git clone` the source package from [GitHub](https://github.com/EnthalpyBill/Dendrogram):
 ```shell
 $ git clone https://github.com/EnthalpyBill/Dendrogram.git
 ```
@@ -41,7 +38,7 @@ To build and install `Dendrogram`, `cd` the folder and `pip install` it:
 $ cd Dendrogram/
 $ pip install -e .
 ```
-The `-e` command allows you to make changes to the code.
+The `-e` command allows you to make changes to the code. Remove it if you don't want to do so. The package has not been published to `PyPI` yet. 
 
 ## Usage
 
