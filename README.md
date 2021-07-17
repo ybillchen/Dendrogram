@@ -3,7 +3,7 @@
 [![version](https://img.shields.io/badge/version-v0.0-brightgreen.svg?style=flat)](https://github.com/EnthalpyBill/Dentrogram)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
-`Dendrogram` is a toolkit for creating N-dimensional dendrogram 
+`Dendrogram` is a toolkit for creating N-dimensional (ND) dendrogram 
 
 ## Table of Contents
 
@@ -49,6 +49,11 @@ To use the package, just import it as
 ```python
 >>> import Dendrogram as dg
 ```
+The command below creates the clustering tree for the dendrogram:
+```python
+>>> dg.makeTreeND(data, min_value, min_delta=0, min_npix=1, num_level=100)
+```
+`data` must be an ND histogram (i.e., a numpy ndarray). 
 
 *Placeholder*
 
