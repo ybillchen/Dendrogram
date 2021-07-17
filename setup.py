@@ -11,6 +11,8 @@ setup(
     license = "MIT",
     author = ["Xi Meng", "Bill Chen"],
     author_email = ["xim@umich.edu", "ybchen@umich.edu"],
+    maintainer = "Bill Chen",
+    maintainer_email = "ybchen@umich.edu",
     description = "A toolkit for creating N-dimensional (ND) dendrogram",
     long_description = long_description,
     long_description_content_type = "text/markdown",
