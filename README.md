@@ -50,7 +50,7 @@ The command below creates the clustering tree (a `structureTree.clusterTree` obj
 ```python
 >>> tree = dg.makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100)
 ```
-`data` must be an ND histogram (i.e., a `numpy ndarray`). 
+`data` must be an ND histogram (i.e., a `numpy.ndarray`). 
 
 ## Contribute
 
