@@ -1,5 +1,7 @@
 import numpy as np
 
+__all__ = ["latticeND"]
+
 class latticeND():
     def __init__(self, data, level):
         self._shape = data.shape
