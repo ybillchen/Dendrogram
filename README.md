@@ -34,7 +34,7 @@ $ pip install dendrogram
 ```
 Alternatively, you can `git clone` the source package from [GitHub](https://github.com/EnthalpyBill/Dendrogram):
 ```shell
-$ git clone git://github.com/EnthalpyBill/Dendrogram.git
+$ git clone https://github.com/EnthalpyBill/Dendrogram.git
 ```
 To build and install `Dendrogram`, `cd` the folder and `pip install` it:
 ```shell
