@@ -18,4 +18,9 @@ setup(
     long_description_content_type = "text/markdown",
     install_requires = ["numpy>=1.18"],
     python_requires = ">=3.8",
+    classifiers = [
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
 )
