@@ -2,31 +2,61 @@ import numpy as np
 from .percolationND import latticeND
 
 class clusterTree():
-    def __init__(self, label, mask):
-        self.label = label
-        self.branches = dict()
-        self.children = dict()
-        self.parent = dict()
-        self.mask = mask.copy()
+    def __init__(self, label, mask, isleaf=True):
+        self._label = label
+        self._branches = dict()
+        self._children = dict()
+        self._parent = dict()
+        self._mask = mask.copy()
+        self._isleaf = isleaf
 
+    @property
+    def label(self):
+        return self._label
+
+    @property
+    def branches(self):
+        return self._branches
+    
+    @property
+    def children(self):
+        return self._children
+    
+    @property
+    def parent(self):
+        return self._parent
+    
+    @property
+    def mask(self):
+        return self._mask
+
+    @property
+    def isleaf(self):
+        return self._isleaf
+    
     def create_leaf(self, label, mask):
-        self.branches[label] = clusterTree(label, mask)
-        self.branches[label].isleaf = True
+        self._branches[label] = clusterTree(label, mask)
 
-    def update_branch(self, label, mask):
-        self.branches[label].mask = mask.copy()
+    def update_mask(self, mask):
+        self._mask = mask.copy()
 
     def merge_branch(self, label, mask, branch):
-        self.branches[label] = clusterTree(label, mask)
-        self.branches[label].isleaf = False
+        self.branches[label] = clusterTree(label, mask, False)
         for i in list(branch): 
-            self.branches[label].children[i] = self.branches[i]
-            self.branches[i].parent[label] = self.branches[label]
+            self._branches[label]._children[i] = self._branches[i]
+            self._branches[i]._parent[label] = self._branches[label]
 
-def makeTree3D(data, min_value, min_delta=0, min_npix=1, num_level=100):
+    def merge_final(self, branch):
+        self._isleaf = False
+        for i in list(branch): 
+            self._children[i] = self._branches[i]
+            self._branches[i]._parent[-1] = self
+            self._mask = self._mask | self._branches[i]._mask
+
+def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100):
     max_level = np.nanmax(data)
     level_list = np.linspace(max_level, min_value, num_level)
-    myTree = clusterTree(-1, np.zeros(data.shape, dtype=int))
+    myTree = clusterTree(-1, np.zeros(data.shape, dtype=bool))
     new_label = 0
     current_label = -1 * np.ones(data.shape, dtype=int)
 
@@ -50,9 +80,9 @@ def makeTree3D(data, min_value, min_delta=0, min_npix=1, num_level=100):
                 # update current labels
                 current_label[mask] = (min(smallset) * 
                     np.ones(data[mask].shape, dtype=int))
-                myTree.update_branch(min(smallset), mask) 
+                myTree.branches[min(smallset)].update_mask(mask) 
 
-            # create leaf if there is only no overlaping clusters
+            # create leaf if there is no overlaping clusters
             elif len(smallset) == 0:
                 if (np.max(data[mask]>level+min_delta) and 
                     len(data[mask]) >= min_npix):
@@ -72,13 +102,9 @@ def makeTree3D(data, min_value, min_delta=0, min_npix=1, num_level=100):
                     np.ones(data[mask].shape, dtype=int))
                 new_label += 1
 
-    currentset = set(ccurrent_label.flatten())
+    currentset = set(current_label.flatten())
     currentset.discard(-1)
 
-    for i in list(currentset):
-        myTree.children[i] = myTree.branches[i]
-        myTree.branches[i].parent[-1] = myTree
-        myTree.mask = ((myTree.mask) | (myTree.branches[i].mask))
+    myTree.merge_final(currentset)
 
     return myTree
-
