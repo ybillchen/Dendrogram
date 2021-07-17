@@ -61,7 +61,7 @@ Feel free to dive in! [Raise an issue](https://github.com/EnthalpyBill/Dendrogra
 
 ## Maintainers
 
-- @XiMeng (Xi Meng)
+- [@mxmintaka (Xi Meng)](https://github.com/mxmintaka)
 - [@EnthalpyBill (Bill Chen)](https://github.com/EnthalpyBill)
 
 ## Cite
