@@ -20,7 +20,7 @@ class latticeND():
     def identify_cluster(self):
         # for simplicity, use flattened labels
         label_flat = -1 * np.ones(self._len, dtype=int)
-        lattice_flat = np._lattice.flatten()
+        lattice_flat = self._lattice.flatten()
 
         # define proper labels, which change over time
         max_label = self._len / 2 + 1
