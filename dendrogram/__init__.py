@@ -1,7 +1,7 @@
-from .percolation3D import latticeND
-from .structureTree3D import clusterTree3D, makeTree3D
+from .percolationND import latticeND
+from .structureTree import clusterTree, makeTree
 
-__all__ = ["percolation3D", "structureTree3D"]
+__all__ = ["percolationND", "structureTree"]
 __version__ = "0.0.dev"
 __name__ = "dendrogram"
-__author__ = ["Bill Chen", "Xi Meng"]
+__author__ = ["Xi Meng", "Bill Chen"]
