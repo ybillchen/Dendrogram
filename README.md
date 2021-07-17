@@ -38,7 +38,7 @@ To build and install `Dendrogram`, `cd` the folder and `pip install` it:
 $ cd Dendrogram/
 $ pip install -e .
 ```
-The `-e` command allows you to make changes to the code. Remove it if you don't want to do so. The package has not been published to `PyPI` yet. 
+The `-e` command allows you to make changes to the code. Remove it if you don't want to do so. `dendrogram` has not been published to `PyPI` yet. 
 
 ## Usage
 
@@ -50,7 +50,7 @@ The command below creates the clustering tree (a `structureTree.clusterTree` obj
 ```python
 >>> tree = dg.makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100)
 ```
-`data` must be an ND histogram (i.e., a numpy ndarray). 
+`data` must be an ND histogram (i.e., a `numpy ndarray`). 
 
 ## Contribute
 
