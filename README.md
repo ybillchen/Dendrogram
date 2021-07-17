@@ -59,9 +59,13 @@ The command below creates the clustering tree (a `structureTree.clusterTree` obj
 
 Feel free to dive in! [Raise an issue](https://github.com/EnthalpyBill/Dendrogram/issues/new) or submit pull requests.
 
-## Maintainers
+### Authors
 
 - [@mxmintaka (Xi Meng)](https://github.com/mxmintaka)
+- [@EnthalpyBill (Bill Chen)](https://github.com/EnthalpyBill)
+
+### Maintainers
+
 - [@EnthalpyBill (Bill Chen)](https://github.com/EnthalpyBill)
 
 ## Cite
