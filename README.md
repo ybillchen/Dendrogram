@@ -47,7 +47,7 @@ The `-e` command allows you to make changes to the code.
 
 To use the package, just import it as
 ```python
->>> import Dendrogram as dg
+>>> import dendrogram as dg
 ```
 The command below creates the clustering tree (a `structureTree.clusterTree` object) for the dendrogram:
 ```python
