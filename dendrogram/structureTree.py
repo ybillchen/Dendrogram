@@ -11,8 +11,9 @@ __all__ = ["clusterTree", "makeTree"]
 class clusterTree():
     """
     A tree class. 
-
-    `clusterTree` can be either the tree itself or the branch of a tree.
+    
+    Note:
+        `clusterTree` can be either the tree itself or the branch of a tree.
     """
 
     def __init__(self, label, mask, isleaf=True):
