@@ -1,4 +1,7 @@
 # Licensed under MIT License - see LICENSE
+"""
+An N-dimensional lattice class with an identify_cluster method.
+"""
 
 import numpy as np
 
