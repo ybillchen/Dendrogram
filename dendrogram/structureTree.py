@@ -19,11 +19,11 @@ class clusterTree():
     def __init__(self, label, mask, isleaf=True):
         """
         Args:
-            label (:obj:`int`): Label of this tree/branch. 
-            mask (:obj:`numpy.ndarray` of :obj:`bool`): The area ocupied by
-                this tree/branch.
-            isleaf (:obj:`bool`, default to True): Whether this is a leaf 
-                branch (or "leaf" in brief) or not.
+            label (int): Label of this tree/branch. 
+            mask (`numpy.ndarray` of bool): The area ocupied by this 
+                tree/branch.
+            isleaf (bool, default to True): Whether this is a leaf branch 
+                (or "leaf" for short) or not.
         """
 
         self._label = label
@@ -36,12 +36,12 @@ class clusterTree():
 
     @property
     def label(self):
-        """:obj:`int`: Label of this tree/branch."""
+        """int: Label of this tree/branch."""
         return self._label
 
     @property
     def mask(self):
-        """:obj:`numpy.ndarray` of :obj:`bool`: Area ocupied by
+        """`numpy.ndarray` of bool: Area ocupied by
             this tree/branch."""
         return self._mask
 
@@ -51,24 +51,24 @@ class clusterTree():
 
     @property
     def isleaf(self):
-        """:obj:`bool`: Whether this is a leaf or not."""
+        """bool: Whether this is a leaf or not."""
         return self._isleaf
 
     @property
     def branches(self):
-        """:obj:`dict` of :obj:`int`: All branches of the tree. 
+        """dict of int: All branches of the tree. 
             Empty if this is a branch."""
         return self._branches
     
     @property
     def children(self):
-        """:obj:`dict` of :obj:`int`: Children of this branch/tree. 
+        """dict of int: Children of this branch/tree. 
             Empty if this is a leaf."""
         return self._children
     
     @property
     def parent(self):
-        """:obj:`dict` of :obj:`int`: Parent of this branch. 
+        """dict of int: Parent of this branch. 
             Empty if this is a tree."""
         return self._parent
     
@@ -81,9 +81,9 @@ class clusterTree():
             presenting branch!
 
         Args:
-            label (:obj:`int`): Label of the new leaf. 
-            mask (:obj:`numpy.ndarray` of :obj:`bool`): The area ocupied by
-                the new leaf.
+            label (int): Label of the new leaf. 
+            mask (`numpy.ndarray` of bool): The area ocupied by the new 
+                leaf.
         """
 
         self._branches[label] = clusterTree(label, mask)
@@ -97,11 +97,10 @@ class clusterTree():
             old branches, *not* removing them!
 
         Args:
-            label (:obj:`int`): Label of the new branch. 
-            mask (:obj:`numpy.ndarray` of :obj:`bool`): The area ocupied by
-                the new branch.
-            branch (:obj:`set` or :obj:`list` of :obj:`int`): Labels of 
-                old branches to be merged.
+            label (int): Label of the new branch. 
+            mask (`numpy.ndarray` of bool): The area ocupied by the new 
+                branch.
+            branch (set or list of int): Labels of branches to be merged.
         """
 
         self.branches[label] = clusterTree(label, mask, False)
@@ -119,8 +118,7 @@ class clusterTree():
             between "tree" and "branch".
 
         Args:
-            branch (:obj:`set` or :obj:`list` of :obj:`int`): Labels of 
-                final branches to be merged.
+            branch (set or list of int): Labels of branches to be merged.
         """
 
         self._isleaf = False
@@ -138,10 +136,10 @@ class clusterTree():
             or deep (with more than 100 levels) trees is not recommend.
 
         Args:
-            print_text (:obj:`bool`): Whether to print to screen or not.
+            print_text (bool): Whether to print to screen or not.
 
         Returns:
-            :obj:`str`: Visualized topology of this tree.
+            str: Visualized topology of this tree.
         """
 
         stack = [self]
@@ -157,11 +155,14 @@ class clusterTree():
                 stack.append(b._children[i])
                 stage.append(s+1)
 
-        print(string)
+        if print_text:
+            print(string)
+
         return string
 
 
-def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100):
+def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100,
+    print_progress=True):
     """
     Make dendrogram tree from N-dimensional data.
 
@@ -170,18 +171,48 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100):
         or deep (with more than 100 levels) trees is not recommend.
 
     Args:
-        data (:obj:`numpy.ndarray` of scalar): Data to make dendrogram tree.
+        data (`numpy.ndarray` of scalar): Data to make dendrogram tree.
         min_value (scalar): Minimum value to consider.
         min_delta (scalar, default to 0): Lag to be ignored. 
-        min_npix (:obj:`int`-like, default to 1): Minimum number of pixels 
-            to form a cluster.
-        num_level (:obj:`int`-like, default to 100): Number of levels.
+        min_npix (int, default to 1): Minimum number of pixels to form a 
+            cluster.
+        num_level (int, default to 100): Number of levels.
+        print_progress (bool, default to True): Whether to print progress 
+            or not.
 
     Returns:
-        :obj:`clusterTree`: Tree for the dendrogram.
+        `clusterTree`: Tree for the dendrogram.
 
     Examples:
-        >>> tree = makeTree(data, 0)
+        Consider a simple two-dimensional bimodal data, let's generate the 
+        tree with `min_value=0`:
+
+        >>> data = np.array([[1,0], [0,1]])
+        >>> tree = makeTree(data, min_value=0)
+        Level 1/100
+        ...
+        Level 100/100
+
+        To check the result, we can print the topology of tree:
+
+        >>> tp = tree.topology()
+        |__(-1)
+            |__(0)
+            |__(1)
+
+        As expected, there are two branches illustrating the bimodality.
+        Similarly, the script below generates dendrogram for a three-peak
+        distribution:
+
+        >>> data = np.array([[3,1,0],[1,1,1],[2,1,3]])
+        >>> tree = makeTree(data, min_value=0, print_progress=False)
+        >>> tp = tree.topology()
+        |__(-1)
+            |__(1)
+            |__(3)
+                |__(0)
+                |__(2)
+            |__(4)
     """
 
     max_value = np.nanmax(data)
@@ -214,7 +245,7 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100):
 
             # create leaf if there is no overlaping clusters
             elif len(smallset) == 0:
-                if (np.max(data[mask]>level+min_delta) and 
+                if (np.max(data[mask]) > level+min_delta and 
                     len(data[mask]) >= min_npix):
 
                     # update current labels
