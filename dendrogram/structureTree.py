@@ -34,15 +34,16 @@ class clusterTree():
     def mask(self):
         return self._mask
 
+    @mask.setter
+    def mask(self, mask):
+        self._mask = mask.copy()
+
     @property
     def isleaf(self):
         return self._isleaf
     
     def create_leaf(self, label, mask):
         self._branches[label] = clusterTree(label, mask)
-
-    def update_mask(self, mask):
-        self._mask = mask.copy()
 
     def merge_branch(self, label, mask, branch):
         self.branches[label] = clusterTree(label, mask, False)
@@ -56,6 +57,28 @@ class clusterTree():
             self._children[i] = self._branches[i]
             self._branches[i]._parent[-1] = self
             self._mask = self._mask | self._branches[i]._mask
+
+    def topology(self):
+        if len(self._branches) > 100:
+            print("Too large tree to be visualized.")
+            return ""
+
+        stack = [self]
+        stage = [0]
+        string = ""
+
+        while len(stack) > 0:
+            b = stack.pop() # pop a branch
+            s = stage.pop() # pop a stage
+
+            string += " "*s*4 + "|__(%d)\n"%(b._label)
+            for i in list(b._children)[::-1]:
+                stack.append(b._children[i])
+                stage.append(s+1)
+
+        print(string)
+        return string
+
 
 def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100):
     max_level = np.nanmax(data)
@@ -84,7 +107,7 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100):
                 # update current labels
                 current_label[mask] = (min(smallset) * 
                     np.ones(data[mask].shape, dtype=int))
-                tree.branches[min(smallset)].update_mask(mask) 
+                tree.branches[min(smallset)].mask = mask 
 
             # create leaf if there is no overlaping clusters
             elif len(smallset) == 0:
