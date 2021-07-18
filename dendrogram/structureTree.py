@@ -222,7 +222,8 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100,
     current_label = -1 * np.ones(data.shape, dtype=int)
 
     for i, level in enumerate(level_list):
-        print("Level %d/%d"%(i+1,num_level))
+        if print_progress:
+            print("Level %d/%d"%(i+1,num_level))
 
         temp_lattice = latticeND(data, level)
         temp_lattice.identify_cluster()
