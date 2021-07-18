@@ -1,3 +1,5 @@
+# Licensed under MIT License - see LICENSE
+
 import numpy as np
 
 __all__ = ["latticeND"]

@@ -1,3 +1,5 @@
+# Licensed under MIT License - see LICENSE
+
 from . import percolationND, structureTree
 from .percolationND import *
 from .structureTree import *
