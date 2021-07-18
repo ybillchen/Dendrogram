@@ -187,7 +187,7 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100,
         Consider a simple two-dimensional bimodal data, let's generate the 
         tree with `min_value=0`:
 
-        >>> data = np.array([[1,0], [0,1]])
+        >>> data = np.array([[2,1], [1,2]])
         >>> tree = makeTree(data, min_value=0)
         Level 1/100
         ...
@@ -197,22 +197,22 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100,
 
         >>> tp = tree.topology()
         |__(-1)
-            |__(0)
-            |__(1)
+            |__(2)
+                |__(0)
+                |__(1)
 
-        As expected, there are two branches illustrating the bimodality.
+        As expected, two branches 0 and 1 illustrates the bimodality.
         Similarly, the script below generates dendrogram for a three-peak
         distribution:
 
-        >>> data = np.array([[3,1,0],[1,1,1],[2,1,3]])
+        >>> data = np.array([[3,1,1],[1,1,1],[2,1,3]])
         >>> tree = makeTree(data, min_value=0, print_progress=False)
         >>> tp = tree.topology()
         |__(-1)
-            |__(1)
             |__(3)
                 |__(0)
+                |__(1)
                 |__(2)
-            |__(4)
     """
 
     max_value = np.nanmax(data)
