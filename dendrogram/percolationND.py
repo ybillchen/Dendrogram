@@ -37,12 +37,13 @@ class latticeND():
         for i in range(self._len):
             if not lattice_flat[i]:
                 continue
-
+            
+            len_j = self._len
             neighbors = -1 * np.ones(2*self._dim, dtype=int)
             # find neighbors in each dimension
             for j in range(self._dim):
                 # length of the j-th dimension
-                len_j = self._len // self._shape[j]
+                len_j = len_j // self._shape[j]
 
                 idx = i // len_j # index in block
                 off = i % len_j # offset in block
