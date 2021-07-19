@@ -1,3 +1,4 @@
 sphinx==3.1.2
 sphinx_rtd_theme==0.5.2
 myst_parser
+numpy>=1.18
