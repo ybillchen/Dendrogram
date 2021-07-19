@@ -1,7 +1,7 @@
 # Licensed under MIT License - see LICENSE
 
 from . import lattice, structureTree
-from .latticeND import *
+from .lattice import *
 from .structureTree import *
 
 __all__ = lattice.__all__ + structureTree.__all__
