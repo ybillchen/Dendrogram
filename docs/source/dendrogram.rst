@@ -1,6 +1,8 @@
 :code:`dendrogram.lattice` module
 =================================
 
+.. autoclass:: dendrogram.lattice.latticeND
+
 .. automodule:: dendrogram.lattice
    :members:
    :undoc-members:
