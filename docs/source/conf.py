@@ -22,7 +22,7 @@ copyright = '2021, Bill Chen'
 author = 'Bill Chen'
 
 # The full version, including alpha/beta/rc tags
-release = '0.2.dev'
+release = '0.3'
 
 
 # -- General configuration ---------------------------------------------------

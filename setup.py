@@ -8,7 +8,7 @@ with open("README.md", "r") as f:
 setup(
     name = 'dendrogram',
     packages = find_packages(),
-    version = '0.2.dev',
+    version = '0.3',
     url = "https://github.com/EnthalpyBill/Dendrogram",
     license = "MIT",
     author = ["Xi Meng", "Bill Chen"],
