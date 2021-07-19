@@ -8,23 +8,59 @@ import numpy as np
 __all__ = ["latticeND"]
 
 class latticeND():
+    """
+    An N-dimensional lattice class.
+    """
+
     def __init__(self, data, level):
+        """
+        Args:
+            data (`numpy.ndarray` of scalar): Data to make dendrogram tree.
+            level (scalar): level of this lattice.
+        """
+
         self._shape = data.shape
         self._dim = len(self._shape)
-        self._len = np.prod(self._shape) # total number of elements
+        self._len = np.prod(self._shape)
         self._lattice = data > level
+
         self._label = None
-        self._percolate = None
+
+    @property
+    def shape(self):
+        """`numpy.ndarray` of int: Shape of the lattice."""
+        return self._shape
+    
+    @property
+    def dim(self):
+        """int: Dimension of the lattice."""
+        return self._dim
+
+    @property
+    def len(self):
+        """int: Total number of elements in the lattice."""
+        return self._len
+    
+    @property
+    def lattice(self):
+        """`numpy.ndarray` of int: Area ocupied by the lattice."""
+        return self._lattice
 
     @property
     def label(self):
+        """`numpy.ndarray` of int: Label of clusters."""
         return self._label
-
-    @property
-    def percolate(self):
-        return self._percolate
     
     def identify_cluster(self):
+        """
+        Identify clusters in the lattice.
+
+        A cluster is a group of connected (neighboring) elements. 
+
+        Returns:
+            `numpy.ndarray` of int: Label of clusters.
+        """
+
         # for simplicity, use flattened labels
         label_flat = -1 * np.ones(self._len, dtype=int)
         lattice_flat = self._lattice.flatten()
@@ -75,14 +111,5 @@ class latticeND():
 
         self._label = label_flat.reshape(self._shape)
         return self._label
-
-    def percolating(self):
-        top = set(self._label[0].reshape(self._len // self._shape[0]))
-        bottom = set(self._label[-1].reshape(self._len // self._shape[0]))
-        top.discard(-1)
-        bottom.discard(-1)
-
-        self._percolate = (top & bottom != set())
-        return self._percolate
 
 
