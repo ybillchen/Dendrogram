@@ -4,7 +4,7 @@ A tree class and a makeTree function.
 """
 
 import numpy as np
-from .latticeND import latticeND
+from .lattice import latticeND
 
 __all__ = ["clusterTree", "makeTree"]
 
