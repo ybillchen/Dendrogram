@@ -42,15 +42,34 @@ The `-e` command allows you to make changes to the code. Remove it if you don't 
 
 ## Usage
 
-To use the package, just import it as
+To use the package, import it as
 ```python
 >>> import dendrogram as dg
 ```
-The command below creates the clustering tree (a `structureTree.clusterTree` object) for the dendrogram:
+Let's consider a simple two-dimensional bimodal data. 
 ```python
->>> tree = dg.makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100)
+>>> data = np.array([[2,1], [1,2]])
+>>> print(data)
+[[2 1]
+ [1 2]]
 ```
-`data` must be an ND histogram (i.e., a `numpy.ndarray`). 
+We can easily generate the dendrogram tree with the following command:
+```python
+>>> tree = makeTree(data, min_value=0, print_progress=False)
+```
+`min_value` specifies the minimum value to consider when making the tree, and `print_progress` determines whether to print the progress or not. Other arguments include
+- `min_delta` (scalar, default to 0): Lag to be ignored. 
+- `min_npix` (int, default to 1): Minimum number of pixels to form a cluster.
+- `num_level` (int, default to 100): Number of levels.
+
+The `makeTree()` method returns a `dendrogram.structureTree.clusterTree` object. To visualize it, use the following command to show the topology of the tree:
+```python
+>>> tp = tree.topology()
+|__(-1)
+    |__(2)
+        |__(0)
+        |__(1)
+```
 
 ## Contribute
 
