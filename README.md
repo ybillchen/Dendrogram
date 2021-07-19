@@ -1,6 +1,6 @@
 # `dendrogram`: N-Dimensional Dendrogram
 
-[![version](https://img.shields.io/badge/version-v0.1.dev-brightgreen.svg?style=flat)](https://github.com/EnthalpyBill/Dentrogram)
+[![version](https://img.shields.io/badge/version-v0.2-brightgreen.svg?style=flat)](https://github.com/EnthalpyBill/Dentrogram)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 `dendrogram` is a toolkit for creating N-dimensional (ND) dendrogram 
