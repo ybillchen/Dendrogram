@@ -62,7 +62,7 @@ We can easily generate the dendrogram tree with the following command:
 - `min_npix` (int, default to 1): Minimum number of pixels to form a cluster.
 - `num_level` (int, default to 100): Number of levels.
 
-The `makeTree()` method returns a `dendrogram.clusterTree` object. To visualize it, use the following command to show the topology of the tree:
+The `makeTree()` method returns a `dendrogram.structureTree.clusterTree` object. To visualize it, use the following command to show the topology of the tree:
 ```python
 >>> tp = tree.topology()
 |__(-1)
