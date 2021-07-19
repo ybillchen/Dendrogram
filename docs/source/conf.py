@@ -14,6 +14,7 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
 print(sys.path)
+print([x[0] for x in os.walk(os.path.abspath('../..'))])
 
 # -- Project information -----------------------------------------------------
 
