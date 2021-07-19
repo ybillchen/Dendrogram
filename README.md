@@ -1,6 +1,6 @@
 # `dendrogram`: N-Dimensional Dendrogram
 
-[![version](https://img.shields.io/badge/version-v0.3.dev-brightgreen.svg?style=flat)](https://github.com/EnthalpyBill/Dentrogram)
+[![version](https://img.shields.io/badge/version-v0.3.1-brightgreen.svg?style=flat)](https://github.com/EnthalpyBill/Dentrogram)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 [![docs](https://readthedocs.org/projects/dendrogram/badge/?version=latest)](https://dendrogram.readthedocs.io/en/latest/)
 
@@ -71,7 +71,7 @@ The `makeTree()` method returns a `dendrogram.structureTree.clusterTree` object.
         |__(0)
         |__(1)
 ```
-As expected, two branches labeled 0 and 1 illustrates the bimodality. See [source] for more details about `makeTree()`.
+As expected, two branches labeled 0 and 1 illustrates the bimodality. See [source]() for more details about `makeTree()`.
 
 ## Contribute
 
