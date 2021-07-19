@@ -70,6 +70,7 @@ The `makeTree()` method returns a `dendrogram.structureTree.clusterTree` object.
         |__(0)
         |__(1)
 ```
+As expected, two branches labeled 0 and 1 illustrates the bimodality. 
 
 ## Contribute
 
