@@ -55,7 +55,7 @@ class latticeND():
         """
         Identify clusters in the lattice.
 
-        A cluster is a group of connected (neighboring) elements. 
+        A cluster is a group of connected (neighboring) pixels. 
 
         Returns:
             `numpy.ndarray` of int: Label of clusters.
