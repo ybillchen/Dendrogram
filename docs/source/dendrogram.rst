@@ -1,7 +1,7 @@
 :code:`dendrogram.lattice` module
 =================================
 
-.. autoclass:: dendrogram.lattice.latticeND
+.. currentmodule:: dendrogram.lattice
 
 .. automodule:: dendrogram.lattice
    :members:
