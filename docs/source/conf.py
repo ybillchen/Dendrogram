@@ -61,3 +61,5 @@ source_suffix = {
     '.txt': 'restructuredtext',
     '.md': 'markdown',
 }
+
+autodoc_member_order = 'bysource'
