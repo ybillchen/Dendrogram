@@ -1,6 +1,6 @@
 # `dendrogram`: N-Dimensional Dendrogram
 
-[![version](https://img.shields.io/badge/version-v0.3.dev-brightgreen.svg?style=flat)](https://github.com/EnthalpyBill/Dendrogram)
+[![version](https://img.shields.io/badge/version-v0.3.2-brightgreen.svg?style=flat)](https://github.com/EnthalpyBill/Dendrogram)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 [![docs](https://readthedocs.org/projects/dendrogram/badge/?version=latest)](https://dendrogram.readthedocs.io/en/latest/)
 
