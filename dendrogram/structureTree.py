@@ -144,14 +144,30 @@ class clusterTree():
 
         stack = [self]
         stage = [0]
+        last_pop_child = [True]
         string = ""
+        inserts = []
 
         while len(stack) > 0:
             b = stack.pop() # pop a branch
             s = stage.pop() # pop a stage
 
-            string += " "*s*4 + "|__(%d)\n"%(b._label)
+            if last_pop_child.pop():
+                newstr = " "*s*4 + chr(9492)+ 2*chr(9472) + "(%d)\n"%(b._label)
+                if s in inserts:
+                    inserts.remove(s)
+            else:
+                newstr = " "*s*4 + chr(9500)+ 2*chr(9472) + "(%d)\n"%(b._label)
+
+            for i in inserts:
+                if newstr[i*4] == " ":
+                    newstr = newstr[:i*4] + chr(9474) + newstr[i*4+1:]
+            string += newstr
+
+            if len(b._children) > 1:
+                inserts.append(s+1)
             for i in list(b._children)[::-1]:
+                last_pop_child.append(i==list(b._children)[-1])
                 stack.append(b._children[i])
                 stage.append(s+1)
 
@@ -196,10 +212,10 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100,
         To check the result, we can print the topology of tree:
 
         >>> tp = tree.topology()
-        |__(-1)
-            |__(2)
-                |__(0)
-                |__(1)
+        └──(-1)
+            └──(2)
+                ├──(0)
+                └──(1)
 
         As expected, two branches 0 and 1 illustrates the bimodality.
         Similarly, the script below generates dendrogram for a three-peak
@@ -208,11 +224,11 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100,
         >>> data = np.array([[3,1,1],[1,1,1],[2,1,3]])
         >>> tree = makeTree(data, min_value=0, print_progress=False)
         >>> tp = tree.topology()
-        |__(-1)
-            |__(3)
-                |__(0)
-                |__(1)
-                |__(2)
+        └──(-1)
+            └──(3)
+                ├──(0)
+                ├──(1)
+                └──(2)
     """
 
     max_value = np.nanmax(data)
