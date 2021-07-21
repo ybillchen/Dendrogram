@@ -66,10 +66,10 @@ We can easily generate the dendrogram tree with the following command:
 The `makeTree()` method returns a `dendrogram.structureTree.clusterTree` object. To visualize it, use the following command to show the topology of the tree:
 ```python
 >>> tp = tree.topology()
-|__(-1)
-    |__(2)
-        |__(0)
-        |__(1)
+└──(-1)
+    └──(2)
+        ├──(0)
+        └──(1)
 ```
 As expected, two branches labeled 0 and 1 illustrates the bimodality. See [source]() for more details about `makeTree()`.
 
