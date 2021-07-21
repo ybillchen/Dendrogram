@@ -236,7 +236,8 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100,
 
     for i, level in enumerate(level_list):
         if print_progress:
-            print("Level %d/%d"%(i+1,num_level))
+            end = "\n" if i+1 == num_level else "\r"
+            print("Running level %d/%d ..."%(i+1,num_level), end=end)
 
         temp_lattice = latticeND(data, level)
         temp_lattice.identify_cluster()
@@ -277,9 +278,15 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100,
                     np.ones(data[mask].shape, dtype=int))
                 new_label += 1
 
+    if print_progress:
+        print("Merging final branch ...")
+
     currentset = set(current_label.flatten())
     currentset.discard(-1)
 
     tree.merge_final(currentset)
+
+    if print_progress:
+        print("Done.")
 
     return tree
