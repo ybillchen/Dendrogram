@@ -5,6 +5,6 @@ from .lattice import *
 from .structureTree import *
 
 __all__ = lattice.__all__ + structureTree.__all__
-__version__ = "0.3.2"
+__version__ = "0.3.dev"
 __name__ = "dendrogram"
 __author__ = ["Xi Meng", "Bill Chen"]
