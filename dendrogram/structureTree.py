@@ -193,7 +193,7 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100,
         min_npix (int, default to 1): Minimum number of pixels to form a 
             cluster.
         num_level (int, default to 100): Number of levels.
-        print_progress (bool, default to True): Whether to print progress 
+        print_progress (bool, default to False): Whether to print progress 
             or not.
 
     Returns:
