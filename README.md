@@ -56,12 +56,13 @@ Let's consider a simple two-dimensional bimodal data.
 ```
 We can easily generate the dendrogram tree with the following command:
 ```python
->>> tree = dg.makeTree(data, min_value=0, print_progress=False)
+>>> tree = dg.makeTree(data, min_value=0)
 ```
 `min_value` specifies the minimum value to consider when making the tree, and `print_progress` determines whether to print the progress or not. Other arguments include
 - `min_delta` (scalar, default to 0): Lag to be ignored. 
 - `min_npix` (int, default to 1): Minimum number of pixels to form a cluster.
 - `num_level` (int, default to 100): Number of levels.
+- `print_progress` (bool, default to False): Whether to print progress or not.
 
 The `makeTree()` method returns a `dendrogram.structureTree.clusterTree` object. To visualize it, use the following command to show the topology of the tree:
 ```python
@@ -71,7 +72,7 @@ The `makeTree()` method returns a `dendrogram.structureTree.clusterTree` object.
         ├──(0)
         └──(1)
 ```
-As expected, two branches labeled 0 and 1 illustrates the bimodality. See [source]() for more details about `makeTree()`.
+As expected, two branches labeled 0 and 1 illustrates the bimodality. See [Module API](https://dendrogram.readthedocs.io/en/latest/dendrogram.html#dendrogram.structureTree.makeTree) for more details about `makeTree()`.
 
 ## Contribute
 
