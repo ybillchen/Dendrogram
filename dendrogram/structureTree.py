@@ -127,7 +127,7 @@ class clusterTree():
             self._branches[i]._parent[-1] = self
             self._mask = self._mask | self._branches[i]._mask
 
-    def topology(self, print_text=True):        
+    def topology(self, stdout=True):        
         """
         Print topology of the tree in pure text. 
 
@@ -136,7 +136,7 @@ class clusterTree():
             or deep (with more than 100 levels) trees is not recommend.
 
         Args:
-            print_text (bool): Whether to print to screen or not.
+            stdout (bool): Whether to print to screen or not.
 
         Returns:
             str: Visualized topology of this tree.
@@ -171,14 +171,14 @@ class clusterTree():
                 stack.append(b._children[i])
                 stage.append(s+1)
 
-        if print_text:
+        if stdout:
             print(string)
 
         return string
 
 
 def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100,
-    print_progress=True):
+    print_progress=False):
     """
     Make dendrogram tree from N-dimensional data.
 
@@ -205,9 +205,6 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100,
 
         >>> data = np.array([[2,1], [1,2]])
         >>> tree = makeTree(data, min_value=0)
-        Level 1/100
-        ...
-        Level 100/100
 
         To check the result, we can print the topology of tree:
 
@@ -222,7 +219,7 @@ def makeTree(data, min_value, min_delta=0, min_npix=1, num_level=100,
         distribution:
 
         >>> data = np.array([[3,1,1],[1,1,1],[2,1,3]])
-        >>> tree = makeTree(data, min_value=0, print_progress=False)
+        >>> tree = makeTree(data, min_value=0)
         >>> tp = tree.topology()
         └──(-1)
             └──(3)
