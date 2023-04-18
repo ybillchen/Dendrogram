@@ -81,11 +81,11 @@ Feel free to dive in! [Raise an issue](https://github.com/EnthalpyBill/Dendrogra
 ### Authors
 
 - [@mxmintaka (Xi Meng)](https://github.com/mxmintaka)
-- [@EnthalpyBill (Bill Chen)](https://github.com/ybillchen)
+- [@ybillchen (Bill Chen)](https://github.com/ybillchen)
 
 ### Maintainers
 
-- [@EnthalpyBill (Bill Chen)](https://github.com/EnthalpyBill)
+- [@ybillchen (Bill Chen)](https://github.com/ybillchen)
 
 ## Cite
 
